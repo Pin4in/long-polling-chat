@@ -14,7 +14,9 @@ require('./handlers/07-bodyParser').init(app);
 const router = require('./router');
 
 app.use(router.routes());
+console.log(config.get('port'));
 
-app.listen(config.get('port'), config.get('host'), () => {
+
+app.listen(process.env.PORT || 3000, '127.0.0.1', () => {
   console.log(`Server is running on http://${config.get('host')}:${config.get('port')}/`);
 });
